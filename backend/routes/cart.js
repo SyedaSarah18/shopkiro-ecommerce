@@ -5,7 +5,7 @@ const db = require('../db');
 // GET cart items with product details
 router.get('/', (req, res) => {
   const items = db.prepare(`
-    SELECT c.id, c.quantity, p.* 
+    SELECT c.id as id, c.product_id, c.quantity, p.name, p.description, p.price, p.emoji, p.category, p.rating, p.review_count
     FROM cart_items c 
     JOIN products p ON c.product_id = p.id
   `).all();
